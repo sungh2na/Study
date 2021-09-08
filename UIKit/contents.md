@@ -104,3 +104,49 @@ var rectangle = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 50, heig
 ```
 
 ### Frame, Bounds 차이
+- frame
+    - SuperView(상위뷰)의 좌표시스템안에서 View의 위치와 크기를 나타낸다.
+- Bounds
+    - View의 위치와 크기를 자신만의 좌표시스템안에서 나타낸다.
+    - 상위뷰와 아무런 상관이 없으며, 오직 자신이 기준
+    - Bounds의 origin은 default로 (0,0)
+    - 오히려 하위뷰가 움직이는 것처럼 보임
+    - 스크롤뷰 원리
+
+### TableView cell의 separator padding 문제
+- 테이블 뷰 작업할때 앞에는 공간이 넓고 뒤에는 공간이 없음
+- 이렇게 하면 앞의 공간이 사라짐
+```Swift
+func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+.
+
+. 
+
+.
+
+cell.separatorInset = UIEdgeInsets.zero
+
+.
+
+.
+
+}
+
+
+
+출처: https://zeddios.tistory.com/235?category=682195 [ZeddiOS]
+```
+
+### frame.height VS frame.size.height
+- frame.height는 CGRect의 height로 CGFloat타입이고 get만 가능
+- frame.size.heigh는 CGRect의 size의 height로 CGFloat타입이고 get, set 가능
+```Swift
+myView.frame.height = 10//error!!!! frame.height는 get이므로.
+
+myView.frame.size.height = 10//가능
+
+
+
+출처: https://zeddios.tistory.com/242?category=682195 [ZeddiOS]
+```
